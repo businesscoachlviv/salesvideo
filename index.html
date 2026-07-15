@@ -46,7 +46,7 @@ h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,48px);l
 h1 em{font-style:normal;color:var(--orange);}
 .subhead{font-size:17px;color:var(--ink-mid);max-width:44ch;}
 .speaker-strip{display:flex;align-items:center;gap:16px;margin-top:6px;}
-.speaker-strip img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--orange);}
+.speaker-strip img{width:64px;height:80px;border-radius:6px;object-fit:cover;border:2px solid var(--orange);}
 .speaker-info{font-size:14px;color:var(--ink-mid);}
 .speaker-info b{color:var(--ink);font-weight:600;display:block;}
 
@@ -65,6 +65,13 @@ input[type="text"]:focus-visible{outline:2px solid var(--orange);outline-offset:
 .btn:hover{background:var(--orange-dim);}
 .btn:active{transform:translateY(1px);}
 .btn:focus-visible{outline:2px solid var(--white);outline-offset:3px;}
+
+.consent-field{margin-bottom:14px;}
+.consent-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.4;text-transform:none;letter-spacing:normal;}
+.consent-label input[type="checkbox"]{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--orange);cursor:pointer;}
+.consent-label a{color:var(--orange);text-decoration:underline;text-underline-offset:2px;}
+.consent-field.invalid .consent-label{color:#FF6B4A;}
+.consent-field .error-msg{margin-left:26px;}
 .microcopy{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.4);text-align:center;}
 .error-msg{color:#FF6B4A;font-size:12px;margin-top:5px;display:none;}
 .field.invalid input{border-color:#FF6B4A;}
@@ -160,7 +167,7 @@ footer a{text-decoration:underline;text-underline-offset:2px;}
           <img src="hero-photo.jpg" alt="Оксана Винницька">
           <div class="speaker-info">
             <b>Оксана Винницька</b>
-            Топ бізнес-тренерка з продажів та лідерства з 11-річним досвідом, агентка змін у бізнесі
+            Бізнес-коуч, топ бізнес-тренерка з продажів та лідерства з 11-річним досвідом у бізнесі
           </div>
         </div>
       </div>
@@ -169,7 +176,7 @@ footer a{text-decoration:underline;text-underline-offset:2px;}
         <div class="card" id="leadCard">
           <div class="form-state">
             <h2>Отримати урок</h2>
-            <p class="card-sub">Залиште ім'я та нік у Telegram — і одразу перейдете в канал з уроком.</p>
+            <p class="card-sub">Залиште ім'я та номер телефону — і одразу перейдете в канал з уроком.</p>
             <form id="leadForm" novalidate>
               <div class="field" id="nameField">
                 <label for="name">Ім'я</label>
@@ -177,9 +184,16 @@ footer a{text-decoration:underline;text-underline-offset:2px;}
                 <span class="error-msg">Вкажіть, будь ласка, ваше ім'я</span>
               </div>
               <div class="field" id="tgField">
-                <label for="tg">Telegram нікнейм</label>
-                <input type="text" id="tg" name="telegram" placeholder="@nickname" autocomplete="off">
-                <span class="error-msg">Вкажіть нік у форматі @nickname</span>
+                <label for="tg">Номер телефону</label>
+                <input type="text" id="tg" name="telegram" placeholder="+380 XX XXX XX XX" autocomplete="tel" inputmode="tel">
+                <span class="error-msg">Вкажіть, будь ласка, коректний номер телефону</span>
+              </div>
+              <div class="field consent-field" id="consentField">
+                <label class="consent-label">
+                  <input type="checkbox" id="consent" name="consent">
+                  <span>Я погоджуюсь на обробку персональних даних згідно з <a href="privacy.html" target="_blank">політикою конфіденційності</a></span>
+                </label>
+                <span class="error-msg">Потрібна згода на обробку персональних даних</span>
               </div>
               <button type="submit" class="btn" id="submitBtn">Отримати урок безкоштовно</button>
               <p class="microcopy">Без спаму. Тільки посилання на урок у Telegram.</p>
@@ -288,7 +302,7 @@ footer a{text-decoration:underline;text-underline-offset:2px;}
     <div class="card">
       <div class="form-state">
         <h2>Отримати урок</h2>
-        <p class="card-sub">Ім'я та Telegram нік — і посилання на урок у вас за хвилину.</p>
+        <p class="card-sub">Ім'я та номер телефону — і посилання на урок у вас за хвилину.</p>
         <form class="leadFormClone" novalidate>
           <div class="field">
             <label>Ім'я</label>
@@ -296,9 +310,16 @@ footer a{text-decoration:underline;text-underline-offset:2px;}
             <span class="error-msg">Вкажіть, будь ласка, ваше ім'я</span>
           </div>
           <div class="field">
-            <label>Telegram нікнейм</label>
-            <input type="text" name="telegram" placeholder="@nickname" autocomplete="off">
-            <span class="error-msg">Вкажіть нік у форматі @nickname</span>
+            <label>Номер телефону</label>
+            <input type="text" name="telegram" placeholder="+380 XX XXX XX XX" autocomplete="tel" inputmode="tel">
+            <span class="error-msg">Вкажіть, будь ласка, коректний номер телефону</span>
+          </div>
+          <div class="field consent-field">
+            <label class="consent-label">
+              <input type="checkbox" name="consent">
+              <span>Я погоджуюсь на обробку персональних даних згідно з <a href="privacy.html" target="_blank">політикою конфіденційності</a></span>
+            </label>
+            <span class="error-msg">Потрібна згода на обробку персональних даних</span>
           </div>
           <button type="submit" class="btn">Отримати урок безкоштовно</button>
           <p class="microcopy">Без спаму. Тільки посилання на урок у Telegram.</p>
@@ -334,9 +355,10 @@ fbq('track','PageView');
 (function(){
   var TG="https://t.me/+2YWWsx_3NM5mNjVi";
   function go(form,card){
-    var ni=form.querySelector('input[name="name"]'),ti=form.querySelector('input[name="telegram"]'),nf=ni.closest('.field'),tf=ti.closest('.field'),ok=true;
+    var ni=form.querySelector('input[name="name"]'),ti=form.querySelector('input[name="telegram"]'),ci=form.querySelector('input[name="consent"]'),nf=ni.closest('.field'),tf=ti.closest('.field'),cf=ci.closest('.field'),ok=true;
     if(!ni.value.trim()){nf.classList.add('invalid');ok=false;}else{nf.classList.remove('invalid');}
-    var tv=ti.value.trim();if(!tv||tv.replace('@','').length<3){tf.classList.add('invalid');ok=false;}else{tf.classList.remove('invalid');}
+    var tv=ti.value.trim().replace(/[\s\-()]/g,'');var digits=tv.replace('+','');if(!/^\d{9,13}$/.test(digits)){tf.classList.add('invalid');ok=false;}else{tf.classList.remove('invalid');}
+    if(!ci.checked){cf.classList.add('invalid');ok=false;}else{cf.classList.remove('invalid');}
     if(!ok)return;
     if(typeof fbq==='function')fbq('track','Lead',{content_name:'top10_sales_mistakes_lesson'});
     var sn=card.querySelector('#successName');if(sn)sn.textContent=ni.value.trim();
